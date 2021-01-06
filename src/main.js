@@ -7,14 +7,14 @@ async function updateIfExists(id, body) {
   return axios
     .get(url)
     .then(response => {
-      if (response == null || !response.data) {
-        throw "Constellation doesn't exist";
-      } else {
+      if (response && response.data) {
         return axios.put(url, body);
+      } else {
+        throw "Constellation doesn't exist";
       }
     })
     .then(response => {
-      return response;
+      return response.data;
     })
     .catch(error => {
       return error.message;

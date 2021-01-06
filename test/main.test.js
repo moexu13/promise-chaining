@@ -13,7 +13,8 @@ describe("Assignment", () => {
         const message = "Request failed with status code 404";
         return Promise.reject(new Error(message));
       }
-      return Promise.resolve();
+      // return Promise.resolve();
+      return Promise.resolve({ data: {} });
     });
     axios.put = sinon.stub(axios, "put");
   });
